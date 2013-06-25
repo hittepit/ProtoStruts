@@ -1,0 +1,11 @@
+.okMessages{
+	color: green;
+}
+
+.errorMessages{
+	color: red;
+}
+
+.error{
+	border-color:red;
+}
