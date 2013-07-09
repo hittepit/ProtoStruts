@@ -1,6 +1,7 @@
 package be.fabrice.vo;
 
 public class Person {
+	private Long id;
 	private String lastname;
 	private String firstname;
 	public String getLastname() {
@@ -14,6 +15,12 @@ public class Person {
 	}
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public static Builder builder(){

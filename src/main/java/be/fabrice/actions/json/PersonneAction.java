@@ -9,8 +9,8 @@ import com.opensymphony.xwork2.validator.annotations.Validations;
 
 @Validations(requiredStrings={
 		@RequiredStringValidator(fieldName="person.lastname",message="Le nom doit être rempli"),
-		@RequiredStringValidator(fieldName="person.firstname",message="Le prénom doit être rempli")
-		}
+		@RequiredStringValidator(fieldName="person.firstname",message="Le prénom doit être rempli")},
+		customValidators=@CustomValidator(fieldName="person",type="personValidation",message="Le prénom et le nom doivent commencer par la même lettre")
 )
 public class PersonneAction extends ActionSupport{
 	private Person person;

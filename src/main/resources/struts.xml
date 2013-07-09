@@ -68,8 +68,20 @@
 		</action>
 	</package>
 	<package name="json" extends="default">
-		<action name="personEditNormal" class="be.fabrice.actions.json.PersonneAction" method="input">
+		<action name="personEditNormal" class="be.fabrice.actions.json.PersonneActionJson" method="input">
+			<!--  pas optimal, normalement seulement le résultat input renvoyé par le WorkflowInterceptor
+			mais fait comme ça pour démontrer qu'il n'y a pas de différence entre les actions normales et
+			json (ce résultat mis à part) -->
+			<!-- Une autre possibilité consiste à recongigurer l'intercepteur workflow dans ce cas-ci afin qu'il
+			renvoie succes, mais c'est du chipotage -->
+			<!-- Comme ceci (redéfinition d'un stack spécifique à l'action:
+			<interceptor-ref name="normal">
+				<param name="workflow.inputResultName">success</param>
+			</interceptor-ref>
+			Alors, le résultat "input" peut disparaître (voir le worklfow standard de validation)
+			 -->
 			<result name="input">/WEB-INF/personEdit.jsp</result>
+			<result name="success">/WEB-INF/personEdit.jsp</result>
 			<result name="saved">/WEB-INF/saved.jsp</result>
 		</action>
 		<action name="personEditJson" class="be.fabrice.actions.json.PersonneActionJson" method="input">

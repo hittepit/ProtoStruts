@@ -8,7 +8,8 @@
 <title>Edit person</title>
 </head>
 <body>
-	<form>
+	<form method="post">
+		<s:actionerror/>
 		Prénom: <s:textfield name="person.firstname" /> <s:fielderror fieldName="person.lastname" /><br />
 		Nom:    <s:textfield name="person.lastname" /> <s:fielderror fieldName="person.firstname"/><br />
 		<s:submit method="save"></s:submit>
