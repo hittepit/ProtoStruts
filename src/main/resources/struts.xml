@@ -68,6 +68,9 @@
 		</action>
 	</package>
 	<package name="json" extends="default">
+		<action name="personList" class="be.fabrice.actions.json.PersonListAction">
+			<result name="success">/WEB-INF/personList.jsp</result>
+		</action>
 		<action name="personEditNormal" class="be.fabrice.actions.json.PersonneActionJson" method="input">
 			<!--  pas optimal, normalement seulement le résultat input renvoyé par le WorkflowInterceptor
 			mais fait comme ça pour démontrer qu'il n'y a pas de différence entre les actions normales et

@@ -8,13 +8,13 @@ public class Person {
 		return lastname;
 	}
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		this.lastname = lastname.trim();
 	}
 	public String getFirstname() {
 		return firstname;
 	}
 	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+		this.firstname = firstname.trim();
 	}
 	public Long getId() {
 		return id;
@@ -45,8 +45,8 @@ public class Person {
 		
 		public Person build(){
 			Person p = new Person();
-			p.setFirstname(this.firstname.trim().toUpperCase());
-			p.setLastname(this.lastname.trim().toUpperCase());
+			p.setFirstname(this.firstname);
+			p.setLastname(this.lastname);
 			return p;
 		}
 	}
