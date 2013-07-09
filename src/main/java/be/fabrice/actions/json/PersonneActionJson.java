@@ -11,6 +11,8 @@ import com.opensymphony.xwork2.validator.annotations.CustomValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 
+import be.fabrice.service.PersonService;
+import be.fabrice.service.mock.PersonServiceMock;
 import be.fabrice.vo.Person;
 
 @Validations(requiredStrings={
@@ -21,6 +23,8 @@ import be.fabrice.vo.Person;
 public class PersonneActionJson extends ActionSupport{
 	private Person person;
 	
+	private PersonService personService = PersonServiceMock.getInstance();
+	
 	private String status="KO";
 	
 	public String input(){
@@ -28,6 +32,7 @@ public class PersonneActionJson extends ActionSupport{
 	}
 	
 	public String save(){
+		personService.save(person);
 		status="OK";
 		addActionMessage("Sauvegarde réussie");
 		return "saved";
@@ -43,15 +48,6 @@ public class PersonneActionJson extends ActionSupport{
 	
 	public String getStatus() {
 		return status;
-	}
-	
-	@Override
-	public void validate() {
-//		if(!StringUtils.isEmpty(person.getFirstname()) && 
-//				!StringUtils.isEmpty(person.getLastname()) && 
-//				!person.getFirstname().startsWith(person.getLastname().substring(0,1))){
-//			addActionError("Le prénom et le nom doivent commencer par la même lettre");
-//		}
 	}
 	
 	//Override nécessaire sinon pas repris dans la réponse JSON

@@ -39,6 +39,9 @@
                 <interceptor-ref name="checkbox"/>
                 <interceptor-ref name="multiselect"/>
                 <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
                 <interceptor-ref name="json" />
                 <interceptor-ref name="conversionError"/>
                 <interceptor-ref name="validation">
@@ -85,7 +88,7 @@
 			 -->
 			<result name="input">/WEB-INF/personEdit.jsp</result>
 			<result name="success">/WEB-INF/personEdit.jsp</result>
-			<result name="saved">/WEB-INF/saved.jsp</result>
+			<result name="saved" type="redirectAction">personList</result>
 		</action>
 		<action name="personEditJson" class="be.fabrice.actions.json.PersonneActionJson" method="input">
 			<interceptor-ref name="jsonstack" />

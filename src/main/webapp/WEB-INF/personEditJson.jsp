@@ -10,7 +10,10 @@
 <script src="jquery-1.9.1.js"></script>
 <script>
 	function PersonCtrl($scope,$http){
-		$scope.person = {'firstname':'','lastname':''}
+//		var id = '<s:property value="person" />';
+		var id = parseInt('<s:property value="person" />'); //Il me faut un nombre
+		var saveUrl = '<s:url action="personEditJson" method="save" includeParams="none"><s:param name="person" value="person.id"/></s:url>'
+		$scope.person = {'id':id,'firstname':'<s:property value="person.firstname"/>','lastname':'<s:property value="person.lastname"/>'}
 		$scope.error = null
 		$scope.messages=null
 		$scope.save = function(person) {
@@ -19,7 +22,7 @@
 			$("input").each(function(i,e){$(e).removeClass("error")})
 			$("#messages").removeClass()
 			$scope.messages = null
-			$http({method:'POST',url:'personEditJson!save.do',data:postData}).success(function(data,status){
+			$http({method:'POST',url:saveUrl,data:postData}).success(function(data,status){
 				if(data.status=="KO"){
 					$scope.error=data.fieldErrors
 					$("#messages").addClass("errorMessages")
@@ -28,8 +31,9 @@
 						$("input[name='"+key+"']").addClass("error")
 					}
 				} else {
-					$("#messages").addClass("okMessages")
-					$scope.messages = data.actionMessages
+//					$("#messages").addClass("okMessages")
+//					$scope.messages = data.actionMessages
+					window.location = '<s:url action="personList" />';
 				}
 			});
 		}

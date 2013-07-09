@@ -10,6 +10,7 @@
 <body>
 	<form method="post">
 		<s:actionerror/>
+		<s:hidden name="person" />
 		Prénom: <s:textfield name="person.firstname" /> <s:fielderror fieldName="person.lastname" /><br />
 		Nom:    <s:textfield name="person.lastname" /> <s:fielderror fieldName="person.firstname"/><br />
 		<s:submit method="save"></s:submit>
