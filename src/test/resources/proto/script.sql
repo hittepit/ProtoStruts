@@ -1,0 +1,1 @@
+insert into BOOK (ID,ISBN,TITLE,AUTHOR) VALUES (1000,'9782736126650','Test book','Someone');
