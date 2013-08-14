@@ -89,4 +89,9 @@ public class Isbn {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return getValue();
+	}
 }

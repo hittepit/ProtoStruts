@@ -97,4 +97,12 @@
 			<result name="saved" type="json" />
 		</action>
 	</package>
+	<package name="proto" extends="default" namespace="/proto">
+		<action name="books" class="be.fabrice.proto.web.action.BooksAction">
+			<result name="success">/WEB-INF/proto/books.jsp</result>
+			<result name="books" type="json">
+				<param name="root">books</param>
+			</result>
+		</action>
+	</package>
 </struts>

@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="953" started-at="2013-08-14T11:09:47Z" finished-at="2013-08-14T11:09:48Z">
+  <suite name="Default suite" duration-ms="941" started-at="2013-08-14T11:20:31Z" finished-at="2013-08-14T11:20:32Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="953" started-at="2013-08-14T11:09:47Z" finished-at="2013-08-14T11:09:48Z">
+    <test name="Default test" duration-ms="941" started-at="2013-08-14T11:20:31Z" finished-at="2013-08-14T11:20:32Z">
       <class name="be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest">
-        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="5" started-at="2013-08-14T11:09:47Z" finished-at="2013-08-14T11:09:47Z">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="5" started-at="2013-08-14T11:20:31Z" finished-at="2013-08-14T11:20:31Z">
         </test-method>
-        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="851" started-at="2013-08-14T11:09:47Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="840" started-at="2013-08-14T11:20:31Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2013-08-14T11:20:32Z">
         </test-method>
-        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="35" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="33" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
           <params>
             <param index="0">
               <value>
@@ -20,13 +20,13 @@
             </param>
           </params>
         </test-method>
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="beforeMethod" is-config="true" duration-ms="5" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="beforeMethod" is-config="true" duration-ms="6" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
         </test-method>
-        <test-method status="PASS" signature="testFindExistingBookReturnsBook()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="testFindExistingBookReturnsBook" duration-ms="26" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="testFindExistingBookReturnsBook()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="testFindExistingBookReturnsBook" duration-ms="25" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
         </test-method>
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="afterMethod" is-config="true" duration-ms="1" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="afterMethod" is-config="true" duration-ms="1" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
         </test-method>
-        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="3" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="3" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
           <params>
             <param index="0">
               <value>
@@ -35,9 +35,7 @@
             </param>
           </params>
         </test-method>
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
-        </test-method>
-        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="1" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
           <params>
             <param index="0">
               <value>
@@ -46,11 +44,13 @@
             </param>
           </params>
         </test-method>
-        <test-method status="PASS" signature="testInsertNewBook()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="testInsertNewBook" duration-ms="16" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
         </test-method>
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="afterMethod" is-config="true" duration-ms="0" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="testInsertNewBook()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="testInsertNewBook" duration-ms="16" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
         </test-method>
-        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="afterMethod" is-config="true" duration-ms="0" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
+        </test-method>
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
           <params>
             <param index="0">
               <value>
@@ -59,7 +59,7 @@
             </param>
           </params>
         </test-method>
-        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2013-08-14T11:09:48Z" finished-at="2013-08-14T11:09:48Z">
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:be.fabrice.proto.persistence.dao.hibernate.BookHibernateDaoTest@5ddc0e7a]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2013-08-14T11:20:32Z" finished-at="2013-08-14T11:20:32Z">
         </test-method>
       </class>
     </test>
