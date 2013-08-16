@@ -98,9 +98,12 @@
 		</action>
 	</package>
 	<package name="proto" extends="default" namespace="/proto">
+		<default-interceptor-ref name="jsonstack" />
 		<action name="books" class="be.fabrice.proto.web.action.BooksAction">
 			<result name="success">/WEB-INF/proto/books.jsp</result>
 			<result name="books" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="noCache">true</param>
 				<param name="root">books</param>
 			</result>
 		</action>
