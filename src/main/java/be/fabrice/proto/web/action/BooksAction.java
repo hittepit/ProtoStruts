@@ -4,14 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import be.fabrice.proto.model.entity.Book;
 import be.fabrice.proto.service.BookService;
+import be.fabrice.proto.web.mapper.BookMapper;
+import be.fabrice.proto.web.vo.BookVo;
 
 public class BooksAction {
 	@Autowired
 	private BookService bookService;
 	
-	private List<Book> books;
+	private List<BookVo> books;
 	
 	/**
 	 * Méthode utilisée pour afficher la page de base. Ne fait rien ici, mais pourrait dans d'autres cas
@@ -23,11 +24,11 @@ public class BooksAction {
 	}
 	
 	public String list(){
-		books = bookService.findAll();
+		books = BookMapper.map(bookService.findAll());
 		return "books";
 	}
 	
-	public List<Book> getBooks() {
+	public List<BookVo> getBooks() {
 		return books;
 	}
 }

@@ -17,17 +17,22 @@
 </head>
 <body ng-controller="BookCtrl">
 	<h1>Livres disponibles</h1>
-	<table>
-		<tr>
-			<th>Titre</th>
-			<th>Auteur</th>
-			<th>Isbn</th>
-		</tr>
-		<tr ng-repeat="book in books">
-			<td>{{book.title}}</td>
-			<td>{{book.author}}</td>
-			<td>{{book.isbn.value}}</td>
-		</tr>
-	</table>
+	<div id="list">
+		<table>
+			<tr>
+				<th>Titre</th>
+				<th>Auteur</th>
+				<th>Isbn</th>
+			</tr>
+			<tr ng-repeat="book in books">
+				<td>{{book.title}}</td>
+				<td>{{book.author}}</td>
+				<td>{{book.isbn}}</td>
+			</tr>
+		</table>
+	</div>
+	<div id="detail">
+		<h3>Titre</h3>
+	</div>
 </body>
 </html>
