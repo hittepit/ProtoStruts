@@ -17,7 +17,6 @@ public class Category {
 	private Long id;
 	@Column(name="NAME")
 	private String name;
-	@Lob
 	@Column(name="DESCRIPTION")
 	private String description;
 	

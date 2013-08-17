@@ -1,11 +1,15 @@
 package be.fabrice.proto.web.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import be.fabrice.proto.model.entity.Book;
 import be.fabrice.proto.service.BookService;
 import be.fabrice.proto.web.mapper.BookMapper;
+import be.fabrice.proto.web.mapper.CategoryMapper;
 import be.fabrice.proto.web.vo.BookVo;
 
 public class BooksAction {
@@ -13,6 +17,10 @@ public class BooksAction {
 	private BookService bookService;
 	
 	private List<BookVo> books;
+	
+	private Integer id;
+	
+	private Map<String, Object> answer;
 	
 	/**
 	 * Méthode utilisée pour afficher la page de base. Ne fait rien ici, mais pourrait dans d'autres cas
@@ -28,7 +36,23 @@ public class BooksAction {
 		return "books";
 	}
 	
+	public String detail(){
+		Book book = bookService.find(id);
+		BookVo bv = BookMapper.map(book);
+		answer = new HashMap<String, Object>();
+		answer.put("book", bv);
+		answer.put("categories", CategoryMapper.map(book.getCategories()));
+		return "detail";
+	}
+	
 	public List<BookVo> getBooks() {
 		return books;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Map<String, Object> getAnswer() {
+		return answer;
 	}
 }

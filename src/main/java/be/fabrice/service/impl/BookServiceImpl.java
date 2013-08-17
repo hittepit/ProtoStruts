@@ -10,8 +10,8 @@ import be.fabrice.proto.model.entity.Book;
 import be.fabrice.proto.persistence.dao.BookDao;
 import be.fabrice.proto.service.BookService;
 
-@Service
-@Transactional(readOnly=true)
+//@Service
+//@Transactional(readOnly=true)
 public class BookServiceImpl implements BookService{
 	@Autowired
 	private BookDao bookDao;
@@ -19,6 +19,11 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<Book> findAll() {
 		return bookDao.findAll();
+	}
+
+	@Override
+	public Book find(Integer id) {
+		return bookDao.find(id);
 	}
 
 }

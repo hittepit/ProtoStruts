@@ -12,12 +12,21 @@
 		$http.get('books!list.do').success(function(data){
 			$scope.books = data
 		})
+		
+		$scope.detail = function(id) {
+				$http.get('books!detail.do?id='+id).success(function(data,status){
+					$scope.book = data.book;
+					$scope.categories = data.categories;
+					//$("#bookdetail").attr('display', 'show');
+				});
+		}
 	}
 </script>
+<link type="text/css" rel="stylesheet" href="../proto.css" />
 </head>
 <body ng-controller="BookCtrl">
 	<h1>Livres disponibles</h1>
-	<div id="list">
+	<div id="booklist">
 		<table>
 			<tr>
 				<th>Titre</th>
@@ -25,14 +34,21 @@
 				<th>Isbn</th>
 			</tr>
 			<tr ng-repeat="book in books">
-				<td>{{book.title}}</td>
+				<td><a ng-click="detail(book.id)">{{book.title}}</a></td>
 				<td>{{book.author}}</td>
 				<td>{{book.isbn}}</td>
 			</tr>
 		</table>
 	</div>
-	<div id="detail">
-		<h3>Titre</h3>
+	<div id="bookdetail">
+		<h2>Détails</h2>
+		Titre: {{book.title}}<br />
+		Auteur: {{book.author}}<br />
+		Isbn: {{book.isbn}}<br />
+		Catégories:<br />
+		<ul ng-repeat="c in categories">
+			<li>{{c.name}}</li>
+		</ul>
 	</div>
 </body>
 </html>

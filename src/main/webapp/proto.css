@@ -9,3 +9,11 @@
 .error{
 	border-color:red;
 }
+
+.booklist{
+	float:left;
+}
+
+.bookdetail{
+	display:none;
+}
