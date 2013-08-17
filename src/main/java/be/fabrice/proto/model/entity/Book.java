@@ -1,10 +1,17 @@
 package be.fabrice.proto.model.entity;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.StringUtils;
@@ -32,6 +39,9 @@ public class Book {
 	private String title;
 	@Column(name="AUTHOR")
 	private String author;
+	@ManyToMany
+	@JoinTable(name="BOOK_CAT",joinColumns=@JoinColumn(name="BOOK_ID"),inverseJoinColumns=@JoinColumn(name="CAT_ID"))
+	private Set<Category> categories;
 	
 	/**
 	 * Constructeur sans paramètre utilisé par Hibernate
@@ -67,6 +77,48 @@ public class Book {
 	}
 	public String getAuthor() {
 		return author;
+	}
+	public Set<Category> getCategories() {
+		return this.categories==null?Collections.EMPTY_SET:Collections.unmodifiableSet(categories);
+	}
+	
+	public void addCategory(Category category){
+		if(this.categories == null){
+			this.categories = new HashSet<Category>();
+		}
+		this.categories.add(category);
+	}
+	
+	public void removeCategory(Category category){
+		if(this.categories == null){
+			this.categories = new HashSet<Category>();
+		}
+		this.categories.remove(category);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((getIsbn() == null) ? 0 : getIsbn().hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Book))
+			return false;
+		Book other = (Book) obj;
+		if (getIsbn() == null) {
+			if (other.getIsbn() != null)
+				return false;
+		} else if (!getIsbn().equals(other.getIsbn()))
+			return false;
+		return true;
 	}
 	
 	
