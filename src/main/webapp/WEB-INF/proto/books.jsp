@@ -7,7 +7,15 @@
 <title>Livres</title>
 <script src="../angular.min.js"></script>
 <script src="../jquery-1.9.1.js"></script>
+<script src="../jquery-ui-1.10.1.custom.min.js"></script>
 <script>
+	$(function() {
+		$("#bookdetail").dialog({
+			autoOpen:false,
+			modal:true,
+			title:"Détails"
+		})
+	})
 	function BookCtrl($scope,$http){
 		$http.get('books!list.do').success(function(data){
 			$scope.books = data
@@ -15,14 +23,15 @@
 		
 		$scope.detail = function(id) {
 				$http.get('books!detail.do?id='+id).success(function(data,status){
+					$("#bookdetail").dialog('open');
 					$scope.book = data.book;
 					$scope.categories = data.categories;
-					//$("#bookdetail").attr('display', 'show');
 				});
 		}
 	}
 </script>
 <link type="text/css" rel="stylesheet" href="../proto.css" />
+<link type="text/css" rel="stylesheet" href="../jquery-ui-1.10.1.custom.css" />
 </head>
 <body ng-controller="BookCtrl">
 	<h1>Livres disponibles</h1>
@@ -41,7 +50,6 @@
 		</table>
 	</div>
 	<div id="bookdetail">
-		<h2>Détails</h2>
 		Titre: {{book.title}}<br />
 		Auteur: {{book.author}}<br />
 		Isbn: {{book.isbn}}<br />
