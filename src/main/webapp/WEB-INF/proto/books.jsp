@@ -15,6 +15,12 @@
 			modal:true,
 			title:"Détails"
 		})
+		$("#bookedit").dialog({
+			dialogClass: "no-close",
+			autoOpen:false,
+			modal:true,
+			title:"Edition/création d'un livre"
+		})
 	})
 	function BookCtrl($scope,$http){
 		$http.get('books!list.do').success(function(data){
@@ -27,6 +33,17 @@
 					$scope.book = data.book;
 					$scope.categories = data.categories;
 				});
+		}
+		
+		$scope.edit = function(id){
+			$("#bookdetail").dialog('close');
+			if(id!=null){
+				$http.get('books!detail.do?id='+id).success(function(data,status){
+					$scope.bookEdit = data.book;
+					$scope.bookEditCategories = data.categories;
+				});
+			}
+			$("#bookedit").dialog('open');
 		}
 	}
 </script>
@@ -48,6 +65,7 @@
 				<td>{{book.isbn}}</td>
 			</tr>
 		</table>
+		<button ng-click="edit(null)">Créer un livre</button>
 	</div>
 	<div id="bookdetail">
 		Titre: {{book.title}}<br />
@@ -57,6 +75,18 @@
 		<ul ng-repeat="c in categories">
 			<li>{{c.name}}</li>
 		</ul>
+		<button ng-click="edit(book.id)">Editer</button>
+	</div>
+	<div id="bookedit">
+		<form name="bookEditForm" novalidate>
+			<input type="hidden" id="bookId" ng-model="bookEdit.id" class="{{codeError}}" />
+			Titre: <input type="text" id="bookTitle" ng-model="bookEdit.title" class="{{codeError}}"  required/><br/>
+			Auteur: <input type="text" id="bookAuthor" ng-model="bookEdit.author" class="{{codeError}}"  /><br/>
+			Isbn: <input type="text" id="bookIsbn" ng-model="bookEdit.isbn" class="{{codeError}}"  required/><br/>
+			Catégories: <select ngModel="bookEditCategories" name="categories"></select>
+			<button ng-click="save(bookEDit)" ng-disabled="bookEditForm.$invalid">Sauver</button>
+			<button ng-click="cancel()">Annuler</button>
+		</form>
 	</div>
 </body>
 </html>
