@@ -31,16 +31,20 @@
 				$http.get('books!detail.do?id='+id).success(function(data,status){
 					$("#bookdetail").dialog('open');
 					$scope.book = data.book;
-					$scope.categories = data.categories;
+					$scope.bookSelectedCategories = data.bookCategories;
 				});
 		}
 		
 		$scope.edit = function(id){
 			$("#bookdetail").dialog('close');
 			if(id!=null){
-				$http.get('books!detail.do?id='+id).success(function(data,status){
+				$http.get('books!edit.do?id='+id).success(function(data,status){
 					$scope.bookEdit = data.book;
-					$scope.bookEditCategories = data.categories;
+					$scope.categories = data.categories; 
+					$scope.bookSelectedCategories = []; 
+					angular.forEach(data.bookCategories, 
+							function(o){this.push(o.id);},
+							$scope.bookSelectedCategories);
 				});
 			}
 			$("#bookedit").dialog('open');
@@ -72,7 +76,7 @@
 		Auteur: {{book.author}}<br />
 		Isbn: {{book.isbn}}<br />
 		Catégories:<br />
-		<ul ng-repeat="c in categories">
+		<ul ng-repeat="c in bookSelectedCategories">
 			<li>{{c.name}}</li>
 		</ul>
 		<button ng-click="edit(book.id)">Editer</button>
@@ -83,7 +87,9 @@
 			Titre: <input type="text" id="bookTitle" ng-model="bookEdit.title" class="{{codeError}}"  required/><br/>
 			Auteur: <input type="text" id="bookAuthor" ng-model="bookEdit.author" class="{{codeError}}"  /><br/>
 			Isbn: <input type="text" id="bookIsbn" ng-model="bookEdit.isbn" class="{{codeError}}"  required/><br/>
-			Catégories: <select ngModel="bookEditCategories" name="categories"></select>
+			Catégories: <select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select>
+			<pre>{{bookSelectedCategories | json}}</pre>
+			<pre>{{categories | json}}</pre>
 			<button ng-click="save(bookEDit)" ng-disabled="bookEditForm.$invalid">Sauver</button>
 			<button ng-click="cancel()">Annuler</button>
 		</form>

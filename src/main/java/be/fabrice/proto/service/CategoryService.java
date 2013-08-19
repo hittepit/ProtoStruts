@@ -1,9 +1,9 @@
-package be.fabrice.proto.persistence.dao;
+package be.fabrice.proto.service;
 
 import java.util.List;
 
 import be.fabrice.proto.model.entity.Category;
 
-public interface CategoryDao {
+public interface CategoryService {
 	List<Category> findAll();
 }
