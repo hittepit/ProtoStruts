@@ -2,6 +2,7 @@ package be.fabrice.proto.model.entity;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -78,6 +79,12 @@ public class Book {
 	public String getAuthor() {
 		return author;
 	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public Set<Category> getCategories() {
 		return this.categories==null?Collections.EMPTY_SET:Collections.unmodifiableSet(categories);
 	}
@@ -94,6 +101,10 @@ public class Book {
 			this.categories = new HashSet<Category>();
 		}
 		this.categories.remove(category);
+	}
+	
+	public void replaceCategories(List<Category> cats){
+		this.categories = new HashSet<Category>(cats);
 	}
 
 	@Override

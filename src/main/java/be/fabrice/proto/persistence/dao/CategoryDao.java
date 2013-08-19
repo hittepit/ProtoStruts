@@ -6,4 +6,6 @@ import be.fabrice.proto.model.entity.Category;
 
 public interface CategoryDao {
 	List<Category> findAll();
+
+	Category find(Long id);
 }

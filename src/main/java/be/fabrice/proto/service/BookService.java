@@ -10,4 +10,6 @@ public interface BookService {
 
 	Book find(Integer id);
 
+	void save(Book book);
+
 }

@@ -18,4 +18,9 @@ public class CategoryHibernateDao extends HibernateDaoSupport implements Categor
 		return getSession().createQuery("from Category c").list();
 	}
 
+	@Override
+	public Category find(Long id) {
+		return (Category)getSession().get(Category.class, id);
+	}
+
 }

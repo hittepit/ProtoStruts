@@ -49,6 +49,23 @@
 			}
 			$("#bookedit").dialog('open');
 		}
+		
+		$scope.save = function(bookEdit,bookSelectedCategories){
+			var b = {
+				'bookVo':bookEdit,
+				'categoriesId':bookSelectedCategories
+			};
+			$http({method:"POST", url:"books!save.do", data:b}).success(function(data){
+				alert("saved")		
+			});
+		}
+		
+		$scope.cancel = function(dlgId){
+			$scope.bookEdit = '';
+			$scope.categories = []; 
+			$scope.bookSelectedCategories = []; 
+			$("#"+dlgId).dialog('close');
+		}
 	}
 </script>
 <link type="text/css" rel="stylesheet" href="../proto.css" />
@@ -86,12 +103,10 @@
 			<input type="hidden" id="bookId" ng-model="bookEdit.id" class="{{codeError}}" />
 			Titre: <input type="text" id="bookTitle" ng-model="bookEdit.title" class="{{codeError}}"  required/><br/>
 			Auteur: <input type="text" id="bookAuthor" ng-model="bookEdit.author" class="{{codeError}}"  /><br/>
-			Isbn: <input type="text" id="bookIsbn" ng-model="bookEdit.isbn" class="{{codeError}}"  required/><br/>
-			Catégories: <select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select>
-			<pre>{{bookSelectedCategories | json}}</pre>
-			<pre>{{categories | json}}</pre>
-			<button ng-click="save(bookEDit)" ng-disabled="bookEditForm.$invalid">Sauver</button>
-			<button ng-click="cancel()">Annuler</button>
+			Isbn (non éditable): <input type="text" id="bookIsbn" ng-model="bookEdit.isbn" class="{{codeError}}"  required/><br/>
+			Catégories: <select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select><br />
+			<button ng-click="save(bookEdit,bookSelectedCategories)" ng-disabled="bookEditForm.$invalid">Sauver</button>
+			<button ng-click="cancel('bookedit')">Annuler</button>
 		</form>
 	</div>
 </body>
