@@ -53,17 +53,6 @@
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="normal"></default-interceptor-ref>
-		<action name="testjson" class="be.fabrice.actions.TestJsonAction">
-			<result name="success" type="json" />
-		</action>
-		<action name="testjsonlimited" class="be.fabrice.actions.TestJsonAction">
-			<result name="success" type="json">
-				<param name="root">structure</param>
-			</result>
-		</action>
-		<action name="person" class="be.fabrice.actions.pattern.PersonAction" method="input">
-			<result name="input">/WEB-INF/person.jsp</result>
-		</action>
 		<action name="first" class="be.fabrice.actions.redirect.FirstAction" method="input">
 			<result name="input">/WEB-INF/first.jsp</result>
 			<result name="next" type="redirectAction">second</result>
