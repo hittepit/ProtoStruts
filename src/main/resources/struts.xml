@@ -12,6 +12,7 @@
 		</result-types>
 		<interceptors>
 			<interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+			<interceptor name="jsonValidation" class="org.apache.struts2.json.JSONValidationInterceptor"/>
 			<interceptor-stack name="normal">
                 <interceptor-ref name="exception">
 					<param name="logEnabled">true</param>
@@ -47,6 +48,7 @@
                 <interceptor-ref name="validation">
 					<param name="excludeMethods">input,back,cancel</param>
                 </interceptor-ref>
+                <interceptor-ref name="jsonValidation"></interceptor-ref>
                 <interceptor-ref name="workflow"/>
 			</interceptor-stack>
 		</interceptors>
@@ -109,8 +111,9 @@
 			<result name="detail" type="json">
 				<param name="excludeNullProperties">true</param>
 				<param name="noCache">true</param>
-				<param name="root">answer</param>
+				<param name="root">#{"book": bookVo, "bookCategories":bookCategories,"categories":categories}</param>
 			</result>
+			<result name="saved" type="json" />
 		</action>
 	</package>
 </struts>

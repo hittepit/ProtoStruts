@@ -36,10 +36,14 @@
 		}
 		
 		$scope.edit = function(id){
+			$("input").each(function(i,e){$(e).removeClass("error")})
+			$("#messages").removeClass()
+			$scope.messages = null
+			$scope.error=null;
 			$("#bookdetail").dialog('close');
 			if(id!=null){
 				$http.get('books!edit.do?id='+id).success(function(data,status){
-					$scope.bookEdit = data.book;
+					$scope.bookVo = data.book;
 					$scope.categories = data.categories; 
 					$scope.bookSelectedCategories = []; 
 					angular.forEach(data.bookCategories, 
@@ -55,8 +59,27 @@
 				'bookVo':bookEdit,
 				'categoriesId':bookSelectedCategories
 			};
-			$http({method:"POST", url:"books!save.do", data:b}).success(function(data){
-				alert("saved")		
+			$("input").each(function(i,e){$(e).removeClass("error")});
+			$("#messages").removeClass();
+			$scope.messages = null;
+			$scope.error==null;
+			$http({method:"POST", url:"books!save.do?struts.enableJSONValidation=true", data:b}).success(function(data){
+				if(data.fieldErrors){
+					$scope.error=data.fieldErrors
+					for(var key in data.fieldErrors){
+						$("input[id='"+key+"']").addClass("error")
+					}
+					$("#messages").addClass("errorMessages")
+					$scope.messages = data.actionErrors
+				} else {
+					$scope.bookEdit = '';
+					$scope.categories = []; 
+					$scope.bookSelectedCategories = []; 
+					$("#bookedit").dialog('close');
+					$http.get('books!list.do').success(function(data){
+						$scope.books = data
+					})
+				}
 			});
 		}
 		
@@ -99,13 +122,19 @@
 		<button ng-click="edit(book.id)">Editer</button>
 	</div>
 	<div id="bookedit">
+		<div id="messages">
+			<ul ng-repeat="m in messages">
+				<li>{{m}}</li>
+			</ul>
+		</div>
 		<form name="bookEditForm" novalidate>
-			<input type="hidden" id="bookId" ng-model="bookEdit.id" class="{{codeError}}" />
-			Titre: <input type="text" id="bookTitle" ng-model="bookEdit.title" class="{{codeError}}"  required/><br/>
-			Auteur: <input type="text" id="bookAuthor" ng-model="bookEdit.author" class="{{codeError}}"  /><br/>
-			Isbn (non éditable): <input type="text" id="bookIsbn" ng-model="bookEdit.isbn" class="{{codeError}}"  required/><br/>
+			<input type="hidden" id="bookId" ng-model="bookVo.id" />
+			Titre: <input type="text" id="bookVo.title" ng-model="bookVo.title"  required/>
+				<span class="errorMessages">{{error['bookVo.title'][0]}}</span><br/>
+			Auteur: <input type="text" id="bookVo.author" ng-model="bookVo.author"  /><br/>
+			Isbn (non éditable): <input type="text" id="bookVo.isbn" ng-model="bookVo.isbn"  required/><br/>
 			Catégories: <select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select><br />
-			<button ng-click="save(bookEdit,bookSelectedCategories)" ng-disabled="bookEditForm.$invalid">Sauver</button>
+			<button ng-click="save(bookVo,bookSelectedCategories)" >Sauver</button>
 			<button ng-click="cancel('bookedit')">Annuler</button>
 		</form>
 	</div>
