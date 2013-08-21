@@ -12,8 +12,8 @@ Attention, le contrôle sur l'isbn a été allégé. Maintenant, 13 chiffres (ca
 TODO proto
 	* problème mise en page formulaire
 		- centrage du formulaire lorsque erreurs de validations
-		- zone readonly (isbn) en édition
 	* commentaires 
 	* formater l'isbn (écriture, champ de saisie)
 	* supprimer des livres
 	* gestion des catégories
+	* tests sur les mappers
