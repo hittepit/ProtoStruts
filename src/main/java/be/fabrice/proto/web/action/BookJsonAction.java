@@ -16,13 +16,10 @@ import be.fabrice.proto.web.vo.CategoryVo;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.CustomValidator;
+import com.opensymphony.xwork2.validator.annotations.ExpressionValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 
-@Validations(requiredStrings={
-		@RequiredStringValidator(fieldName="bookVo.title",message="Le titre ne peut être vide")},
-		customValidators=@CustomValidator(key="bookVo.isbn",fieldName="bookVo.isbn",type="isbnValidation",message="Isbn incorrect (13 chiffres commençant par 978)")
-		)
 public class BookJsonAction extends ActionSupport {
 	@Autowired
 	private BookService bookService;
@@ -40,7 +37,6 @@ public class BookJsonAction extends ActionSupport {
 	private List<CategoryVo> bookCategories;
 	private List<CategoryVo> categories;
 
-	
 	@SkipValidation
 	public String list(){
 		books = bookMapper.map(bookService.findAll());
@@ -69,6 +65,12 @@ public class BookJsonAction extends ActionSupport {
 		return "categories";
 	}
 	
+	@Validations(requiredStrings={
+			@RequiredStringValidator(fieldName="bookVo.title",message="Le titre ne peut être vide")},
+			customValidators={
+			@CustomValidator(key="bookVo.isbn",fieldName="bookVo.isbn",type="isbnValidation",message="Isbn incorrect (13 chiffres commençant par 978)"),
+			@CustomValidator(fieldName="categoriesId",type="nonEmptyListValidation",message="Sélectionnez au moins une catégorie")
+			})
 	public String save(){
 		Book book = bookMapper.map(bookVo);
 		List<Category> categories = categoryMapper.map(categoriesId.toArray(new Integer[0]));
@@ -91,6 +93,9 @@ public class BookJsonAction extends ActionSupport {
 	}
 	public void setCategoriesId(List<Integer> categoriesId) {
 		this.categoriesId = categoriesId;
+	}
+	public List<Integer> getCategoriesId() {
+		return categoriesId;
 	}
 	public List<CategoryVo> getBookCategories() {
 		return bookCategories;

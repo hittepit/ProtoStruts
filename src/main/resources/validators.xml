@@ -4,4 +4,5 @@
 <validators>
 	<validator name="personValidation" class="be.fabrice.actions.json.PersonValidation" />
 	<validator name="isbnValidation" class="be.fabrice.proto.web.validator.IsbnValidator" />
+	<validator name="nonEmptyListValidation" class="be.fabrice.proto.web.validator.NonEmptyListValidator" />
 </validators>

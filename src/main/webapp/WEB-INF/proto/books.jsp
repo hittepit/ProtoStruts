@@ -151,7 +151,7 @@
 			<tr>
 				<td>Catégories: </td>
 				<td><select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select></td>
-				<td>&nbsp;</td>
+				<td><span class="errorMessages">{{error['categoriesId'][0]}}</span></td>
 			</tr>
 			<tr>
 				<td><button ng-click="save(bookVo,bookSelectedCategories)" >Sauver</button></td>
