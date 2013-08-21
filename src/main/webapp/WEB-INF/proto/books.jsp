@@ -23,12 +23,12 @@
 		})
 	})
 	function BookCtrl($scope,$http){
-		$http.get('books!list.do').success(function(data){
+		$http.get('booksJson!list.do').success(function(data){
 			$scope.books = data
 		})
 		
 		$scope.detail = function(id) {
-				$http.get('books!detail.do?id='+id).success(function(data,status){
+				$http.get('booksJson!detail.do?id='+id).success(function(data,status){
 					$("#bookdetail").dialog('open');
 					$scope.book = data.book;
 					$scope.bookSelectedCategories = data.bookCategories;
@@ -42,7 +42,7 @@
 			$scope.error=null;
 			$("#bookdetail").dialog('close');
 			if(id!=null){
-				$http.get('books!edit.do?id='+id).success(function(data,status){
+				$http.get('booksJson!edit.do?id='+id).success(function(data,status){
 					$scope.bookVo = data.book;
 					$scope.categories = data.categories; 
 					$scope.bookSelectedCategories = []; 
@@ -63,7 +63,7 @@
 			$("#messages").removeClass();
 			$scope.messages = null;
 			$scope.error==null;
-			$http({method:"POST", url:"books!save.do?struts.enableJSONValidation=true", data:b}).success(function(data){
+			$http({method:"POST", url:"booksJson!save.do?struts.enableJSONValidation=true", data:b}).success(function(data){
 				if(data.fieldErrors){
 					$scope.error=data.fieldErrors
 					for(var key in data.fieldErrors){
@@ -76,7 +76,7 @@
 					$scope.categories = []; 
 					$scope.bookSelectedCategories = []; 
 					$("#bookedit").dialog('close');
-					$http.get('books!list.do').success(function(data){
+					$http.get('booksJson!list.do').success(function(data){
 						$scope.books = data
 					})
 				}

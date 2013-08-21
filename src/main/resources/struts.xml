@@ -92,6 +92,8 @@
 		<default-interceptor-ref name="jsonstack" />
 		<action name="books" class="be.fabrice.proto.web.action.BooksAction">
 			<result name="success">/WEB-INF/proto/books.jsp</result>
+		</action>
+		<action name="booksJson" class="be.fabrice.proto.web.action.BookJsonAction">
 			<result name="books" type="json">
 				<param name="excludeNullProperties">true</param>
 				<param name="noCache">true</param>
