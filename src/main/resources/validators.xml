@@ -3,4 +3,5 @@
   		"http://struts.apache.org/dtds/xwork-validator-config-1.0.dtd">
 <validators>
 	<validator name="personValidation" class="be.fabrice.actions.json.PersonValidation" />
+	<validator name="isbnValidation" class="be.fabrice.proto.web.validator.IsbnValidator" />
 </validators>

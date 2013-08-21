@@ -8,3 +8,5 @@ Ce qui fonctionne correctement:
 * l'utilisation de validation avec Json et angularJs
 
 Attention, le contrôle sur l'isbn a été allégé. Maintenant, 13 chiffres (caractères en fait) qui doivent commencer par 978.
+
+TODO problème mise en page formulaire

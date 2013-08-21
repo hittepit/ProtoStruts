@@ -19,7 +19,8 @@
 			dialogClass: "no-close",
 			autoOpen:false,
 			modal:true,
-			title:"Edition/création d'un livre"
+			title:"Edition/création d'un livre",
+	        width:'auto'
 		})
 	})
 	function BookCtrl($scope,$http){
@@ -131,13 +132,33 @@
 		</div>
 		<form name="bookEditForm" novalidate>
 			<input type="hidden" id="bookId" ng-model="bookVo.id" />
-			Titre: <input type="text" id="bookVo.title" ng-model="bookVo.title"  required/>
-				<span class="errorMessages">{{error['bookVo.title'][0]}}</span><br/>
-			Auteur: <input type="text" id="bookVo.author" ng-model="bookVo.author"  /><br/>
-			Isbn (non éditable): <input type="text" id="bookVo.isbn" ng-model="bookVo.isbn"  required/><br/>
-			Catégories: <select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select><br />
-			<button ng-click="save(bookVo,bookSelectedCategories)" >Sauver</button>
-			<button ng-click="cancel('bookedit')">Annuler</button>
+			<table>
+			<tr>
+				<td>Titre: </td>
+				<td><input type="text" id="bookVo.title" ng-model="bookVo.title"  required/></td>
+				<td><span class="errorMessages">{{error['bookVo.title'][0]}}</span></td>
+			</tr>
+			<tr>
+				<td>Auteur: </td>
+				<td><input type="text" id="bookVo.author" ng-model="bookVo.author"  /></td>
+				<td>&nbsp;
+			</tr>
+			<tr>
+				<td>Isbn (non éditable): </td>
+				<td><input type="text" id="bookVo.isbn" ng-model="bookVo.isbn"  required/></td>
+				<td><span class="errorMessages">{{error['bookVo.isbn'][0]}}</span></td>
+			</tr>
+			<tr>
+				<td>Catégories: </td>
+				<td><select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><button ng-click="save(bookVo,bookSelectedCategories)" >Sauver</button></td>
+				<td><button ng-click="cancel('bookedit')">Annuler</button></td>
+				<td>&nbsp;</td>
+				</tr>
+			</table>
 		</form>
 	</div>
 </body>

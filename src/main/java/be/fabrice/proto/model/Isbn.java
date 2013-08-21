@@ -19,6 +19,9 @@ public class Isbn {
 	}
 
 	public static boolean validate(String value){
+		if(value==null){
+			return false;
+		}
 		String cleanValue = cleanValue(value);
 		//Dans le if et le else if, les lignes en commentaires sont normalement les bonnes et le return est faux
 		if(cleanValue.length()==13){
