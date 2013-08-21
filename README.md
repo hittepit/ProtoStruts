@@ -14,5 +14,6 @@ TODO proto
 		- centrage du formulaire lorsque erreurs de validations
 		- zone readonly (isbn) en édition
 	* commentaires 
-	* problème auteur vide
 	* formater l'isbn (écriture, champ de saisie)
+	* supprimer des livres
+	* gestion des catégories
