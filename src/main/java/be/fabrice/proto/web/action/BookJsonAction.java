@@ -34,7 +34,7 @@ public class BookJsonAction extends ActionSupport {
 	private List<BookVo> books;
 	private List<Integer> categoriesId;
 	private List<CategoryVo> bookCategories;
-	private List<Category> categories;
+	private List<CategoryVo> categories;
 
 	
 	@SkipValidation
@@ -65,8 +65,13 @@ public class BookJsonAction extends ActionSupport {
 //		answer.put("categories", categoryService.findAll());
 		bookVo = bookMapper.map(book);
 		bookCategories=categoryMapper.map(book.getCategories());
-		categories=categoryService.findAll();
 		return "detail";
+	}
+	
+	@SkipValidation
+	public String categoriesList(){
+		categories=categoryMapper.map(categoryService.findAll());
+		return "categories";
 	}
 	
 	public String save(){
@@ -95,7 +100,7 @@ public class BookJsonAction extends ActionSupport {
 	public List<CategoryVo> getBookCategories() {
 		return bookCategories;
 	}
-	public List<Category> getCategories() {
+	public List<CategoryVo> getCategories() {
 		return categories;
 	}
 }

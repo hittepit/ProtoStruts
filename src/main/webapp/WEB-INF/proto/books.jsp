@@ -36,21 +36,26 @@
 		}
 		
 		$scope.edit = function(id){
+			$scope.bookVo = '';
+			$scope.categories = []; 
+			$scope.bookSelectedCategories = []; 
 			$("input").each(function(i,e){$(e).removeClass("error")})
 			$("#messages").removeClass()
 			$scope.messages = null
 			$scope.error=null;
 			$("#bookdetail").dialog('close');
-			if(id!=null){
-				$http.get('booksJson!edit.do?id='+id).success(function(data,status){
-					$scope.bookVo = data.book;
-					$scope.categories = data.categories; 
-					$scope.bookSelectedCategories = []; 
-					angular.forEach(data.bookCategories, 
-							function(o){this.push(o.id);},
-							$scope.bookSelectedCategories);
-				});
-			}
+			$http.get("booksJson!categoriesList.do").success(function(data,status){
+				$scope.categories = data; 
+				if(id!=null){
+					$http.get('booksJson!edit.do?id='+id).success(function(data,status){
+						$scope.bookVo = data.book;
+						$scope.bookSelectedCategories = []; 
+						angular.forEach(data.bookCategories, 
+								function(o){this.push(o.id);},
+								$scope.bookSelectedCategories);
+					});
+				}
+			});
 			$("#bookedit").dialog('open');
 		}
 		
@@ -72,7 +77,7 @@
 					$("#messages").addClass("errorMessages")
 					$scope.messages = data.actionErrors
 				} else {
-					$scope.bookEdit = '';
+					$scope.bookVo = '';
 					$scope.categories = []; 
 					$scope.bookSelectedCategories = []; 
 					$("#bookedit").dialog('close');
@@ -84,9 +89,6 @@
 		}
 		
 		$scope.cancel = function(dlgId){
-			$scope.bookEdit = '';
-			$scope.categories = []; 
-			$scope.bookSelectedCategories = []; 
 			$("#"+dlgId).dialog('close');
 		}
 	}

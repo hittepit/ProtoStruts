@@ -99,10 +99,15 @@
 				<param name="noCache">true</param>
 				<param name="root">books</param>
 			</result>
+			<result name="categories" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="noCache">true</param>
+				<param name="root">categories</param>
+			</result>
 			<result name="detail" type="json">
 				<param name="excludeNullProperties">true</param>
 				<param name="noCache">true</param>
-				<param name="root">#{"book": bookVo, "bookCategories":bookCategories,"categories":categories}</param>
+				<param name="root">#{"book": bookVo, "bookCategories":bookCategories}</param>
 			</result>
 			<result name="saved" type="json" />
 		</action>

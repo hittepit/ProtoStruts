@@ -1,8 +1,8 @@
 package be.fabrice.proto.web.mapper;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,7 +24,7 @@ public class CategoryMapper {
 		return cv;
 	}
 	
-	public List<CategoryVo> map(Set<Category> cats){
+	public List<CategoryVo> map(Collection<Category> cats){
 		List<CategoryVo> cvs = new ArrayList<CategoryVo>();
 		for(Category c : cats){
 			cvs.add(map(c));
