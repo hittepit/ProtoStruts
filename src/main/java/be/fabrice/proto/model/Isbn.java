@@ -20,14 +20,17 @@ public class Isbn {
 
 	public static boolean validate(String value){
 		String cleanValue = cleanValue(value);
+		//Dans le if et le else if, les lignes en commentaires sont normalement les bonnes et le return est faux
 		if(cleanValue.length()==13){
-			int c13 = digitAt(cleanValue,12);
-			int c = control13(cleanValue);
-			return c13==c;
+//			int c13 = digitAt(cleanValue,12);
+//			int c = control13(cleanValue);
+//			return c13==c;
+			return cleanValue.startsWith("978");
 		} else if(cleanValue.length()==10){
-			String c10 = cleanValue.substring(9,10);
-			String c = control10(cleanValue);
-			return c10.equals(c);
+//			String c10 = cleanValue.substring(9,10);
+//			String c = control10(cleanValue);
+//			return c10.equals(c);
+			return true;
 		}
 		return false;
 	}
