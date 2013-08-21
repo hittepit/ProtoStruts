@@ -62,7 +62,7 @@
 		
 		$scope.save = function(bookEdit,bookSelectedCategories){
 			var b = {
-				'bookVo':bookEdit,
+				'bookVo':bookEdit==""?{}:bookEdit, //Quand rien n'est rempli, booEdit==""
 				'categoriesId':bookSelectedCategories
 			};
 			$("input").each(function(i,e){$(e).removeClass("error")});
