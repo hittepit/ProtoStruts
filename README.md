@@ -15,3 +15,4 @@ TODO proto
 		- zone readonly (isbn) en édition
 	* commentaires 
 	* problème auteur vide
+	* formater l'isbn (écriture, champ de saisie)

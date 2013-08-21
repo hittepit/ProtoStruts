@@ -5,3 +5,4 @@
 .externalToolBuilders
 
 target/
+test-output/

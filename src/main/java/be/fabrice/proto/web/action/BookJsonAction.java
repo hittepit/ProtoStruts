@@ -74,7 +74,7 @@ public class BookJsonAction extends ActionSupport {
 	public String save(){
 		Book book = bookMapper.map(bookVo);
 		List<Category> categories = categoryMapper.map(categoriesId.toArray(new Integer[0]));
-		book.replaceCategories(categories);
+		book.synchronizeCategories(categories);
 		bookService.save(book);
 		return "saved";
 	}
