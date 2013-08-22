@@ -12,18 +12,18 @@ Attention, le contrôle sur l'isbn a été allégé. Maintenant, 13 chiffres (ca
 
 TODO proto
 
-	* configurer l'ajax/json pour les exceptions et les erreurs d'autorisation
+* améliorer l'ajax/json pour les exceptions et les erreurs d'autorisation
+
+* problème mise en page formulaire
+
+	- centrage du formulaire lorsque erreurs de validations
 	
-	* problème mise en page formulaire
-	
-		- centrage du formulaire lorsque erreurs de validations
-		
-	* commentaires
-	 
-	* formater l'isbn (écriture, champ de saisie)
-	
-	* supprimer des livres
-	
-	* gestion des catégories
-	
-	* tests sur CategoryMapper
+* commentaires
+ 
+* formater l'isbn (écriture, champ de saisie)
+
+* supprimer des livres
+
+* gestion des catégories
+
+* tests sur CategoryMapper

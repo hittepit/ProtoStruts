@@ -46,6 +46,9 @@ public class BookJsonAction extends ActionSupport {
 	@SkipValidation
 	public String detail(){
 		Book book = bookService.find(id);
+		if("exception".equals(book.getTitle())){
+			throw new RuntimeException("pas celui-là");
+		}
 		bookVo = bookMapper.map(book);
 		bookCategories=categoryMapper.map(book.getCategories());
 		return "detail";

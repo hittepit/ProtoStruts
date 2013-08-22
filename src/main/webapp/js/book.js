@@ -9,6 +9,9 @@ $(function() {
         width:'auto'
 	});
 });
+function exception(data){
+	return data.exception != null;
+}
 function BookCtrl($scope,$http){
 	$http.get('booksJson!list.do').success(function(data){
 		$scope.books = data;
@@ -16,9 +19,13 @@ function BookCtrl($scope,$http){
 	
 	$scope.detail = function(id) {
 			$http.get('booksJson!detail.do?id='+id).success(function(data,status){
-				$("#bookdetail").dialog('open');
-				$scope.book = data.book;
-				$scope.bookSelectedCategories = data.bookCategories;
+				if(exception(data)){
+					alert("exception !!");
+				} else {
+					$("#bookdetail").dialog('open');
+					$scope.book = data.book;
+					$scope.bookSelectedCategories = data.bookCategories;
+				}
 			});
 	};
 	
@@ -60,7 +67,8 @@ function BookCtrl($scope,$http){
 		$("#messages").removeClass();
 		$scope.messages = null;
 		$scope.error==null;
-		$http({method:"POST", url:"booksJson!save.do?struts.enableJSONValidation=true", data:b}).success(function(data){
+		$http({method:"POST", 
+			url:"booksJson!save.do?struts.enableJSONValidation=true", data:b}).success(function(data){
 			if(data.fieldErrors){
 				$scope.error=data.fieldErrors;
 				for(var key in data.fieldErrors){
@@ -76,6 +84,12 @@ function BookCtrl($scope,$http){
 				$http.get('booksJson!list.do').success(function(data){
 					$scope.books = data;
 				});
+			}
+		}).error(function(data,status,header,config){
+			if(status==401){
+				alert("Tu ne peux pas!");
+			} else {
+				alert("Erreur "+status);
 			}
 		});
 	};

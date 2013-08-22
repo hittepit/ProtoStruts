@@ -14,6 +14,7 @@
 		<interceptors>
 			<interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
 			<interceptor name="jsonValidation" class="org.apache.struts2.json.JSONValidationInterceptor"/>
+			<interceptor name="security" class="be.fabrice.proto.interceptor.FakeSecurityInterceptor" />
 			<interceptor-stack name="normal">
                 <interceptor-ref name="exception">
 					<param name="logEnabled">true</param>
@@ -45,6 +46,7 @@
                     <param name="excludeParams">dojo\..*,^struts\..*</param>
                 </interceptor-ref>
                 <interceptor-ref name="json" />
+                <interceptor-ref name="security" />
                 <interceptor-ref name="conversionError"/>
                 <interceptor-ref name="validation">
 					<param name="excludeMethods">input,back,cancel</param>
@@ -91,6 +93,15 @@
 	</package>
 	<package name="proto" extends="default" namespace="/proto">
 		<default-interceptor-ref name="jsonstack" />
+		<global-results>
+			<result name="unauthorized" type="json">
+				<param name="statusCode">401</param>
+			</result>
+			<result name="exception" type="json" />
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exception" exception="java.lang.Throwable"></exception-mapping>
+		</global-exception-mappings>
 		<action name="books" class="be.fabrice.proto.web.action.BooksAction">
 			<result name="success">/WEB-INF/proto/books.jsp</result>
 		</action>
