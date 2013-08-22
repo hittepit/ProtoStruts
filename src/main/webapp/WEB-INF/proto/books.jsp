@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Livres</title>
-<script src="../angular.min.js"></script>
-<script src="../jquery-1.9.1.js"></script>
-<script src="../jquery-ui-1.10.1.custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/angular.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui-1.10.1.custom.min.js"></script>
 <script>
 	$(function() {
 		$("#bookdetail").dialog({
@@ -99,8 +99,8 @@
 		}
 	}
 </script>
-<link type="text/css" rel="stylesheet" href="../proto.css" />
-<link type="text/css" rel="stylesheet" href="../jquery-ui-1.10.1.custom.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/proto.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/jquery-ui-1.10.1.custom.css" />
 </head>
 <body ng-controller="BookCtrl">
 	<h1>Livres disponibles</h1>

@@ -39,7 +39,7 @@
 		}
 	}
 </script>
-<link rel="stylesheet" href="proto.css" />
+<link rel="stylesheet" href="styles/proto.css" />
 </head>
 <body ng-controller="PersonCtrl">
 	<div id="messages">
