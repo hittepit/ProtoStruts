@@ -16,4 +16,4 @@ TODO proto
 	* formater l'isbn (écriture, champ de saisie)
 	* supprimer des livres
 	* gestion des catégories
-	* tests sur les mappers
+	* tests sur CategoryMapper

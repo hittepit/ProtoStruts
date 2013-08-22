@@ -29,55 +29,21 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing=0 cellpadding=0 class="param">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">12</td><td class="numi">12</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0,0 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">4</td><td class="numi">4</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0,1 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <a id="summary"></a>
 <table cellspacing=0 cellpadding=0 class="passed">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Time<br/>(Msecs)</th></tr>
 <tr><th colspan="4">Default test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="12">be.fabrice.proto.model.entity.TestBook<td><a href="#m1"><b>testAddExistingCategoryDoesNotChangeCollection</b>  </a></td><td class="numi">1</td><td class="numi">11</td></tr><tr class="passedodd"><td><a href="#m2"><b>testRemovingExistingCategoryRemovesFromCollection</b>  </a></td><td class="numi">1</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m3"><b>testSynchronizeCategoriesSynrhconizeCollection</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m4"><b>testAddNewCategoryToEmptyCollectionAddsCategoryToCollection</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m5"><b>testBookCreationWithCorrectValuesCreatesABookWithCorrectTrimmedProperties</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m6"><b>testCategoriesIsEmptyAtCreation</b>  </a></td><td class="numi">1</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m7"><b>testBookCreationSetNullAuthorIfAuthorIsEmpty</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m8"><b>testBookCreationFailsIfNullTitle</b>  </a></td><td class="numi">1</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m9"><b>testRemovingNonExistingCategoryRemovesNothingFromCollection</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m10"><b>testBookCreationFailsIfEmptyTitle</b>  </a></td><td class="numi">1</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m11"><b>testAddNewCategoryToNonEmptyCollectionAddsCategoryToCollection</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m12"><b>testBookCreationFailsIfNullIsbn</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr>
+<tr class="passedodd"><td rowspan="4">be.fabrice.proto.web.mapper.BookMapperTest<td><a href="#m1"><b>testMapOfAVoWithoutIdReturnsANewTransientEntity</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m2"><b>testMapOfAVoWithIdreturnsTheModifiedEntityWith</b>  </a></td><td class="numi">1</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m3"><b>testMapEntityReturnsAVo</b>  </a></td><td class="numi">1</td><td class="numi">5</td></tr><tr class="passedodd"><td><a href="#m4"><b>testMapListOfEntitiesReturnsListOfVos</b>  </a></td><td class="numi">1</td><td class="numi">1</td></tr>
 </table>
 <h1>Default test</h1>
-<a id="m1"></a><h2>be.fabrice.proto.model.entity.TestBook:testAddExistingCategoryDoesNotChangeCollection</h2>
+<a id="m1"></a><h2>be.fabrice.proto.web.mapper.BookMapperTest:testMapOfAVoWithoutIdReturnsANewTransientEntity</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m2"></a><h2>be.fabrice.proto.model.entity.TestBook:testRemovingExistingCategoryRemovesFromCollection</h2>
+<a id="m2"></a><h2>be.fabrice.proto.web.mapper.BookMapperTest:testMapOfAVoWithIdreturnsTheModifiedEntityWith</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m3"></a><h2>be.fabrice.proto.model.entity.TestBook:testSynchronizeCategoriesSynrhconizeCollection</h2>
+<a id="m3"></a><h2>be.fabrice.proto.web.mapper.BookMapperTest:testMapEntityReturnsAVo</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m4"></a><h2>be.fabrice.proto.model.entity.TestBook:testAddNewCategoryToEmptyCollectionAddsCategoryToCollection</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m5"></a><h2>be.fabrice.proto.model.entity.TestBook:testBookCreationWithCorrectValuesCreatesABookWithCorrectTrimmedProperties</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m6"></a><h2>be.fabrice.proto.model.entity.TestBook:testCategoriesIsEmptyAtCreation</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m7"></a><h2>be.fabrice.proto.model.entity.TestBook:testBookCreationSetNullAuthorIfAuthorIsEmpty</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m8"></a><h2>be.fabrice.proto.model.entity.TestBook:testBookCreationFailsIfNullTitle</h2>
-<div style="padding-left:3em">
-<p>Title must be defined</p>
-be.fabrice.proto.model.entity.Book.&lt;init&gt;(Book.java:100)
-<br/>at be.fabrice.proto.model.entity.TestBook.testBookCreationFailsIfNullTitle(TestBook.java:36)
-<br/>25 lines not shown
-</div>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m9"></a><h2>be.fabrice.proto.model.entity.TestBook:testRemovingNonExistingCategoryRemovesNothingFromCollection</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m10"></a><h2>be.fabrice.proto.model.entity.TestBook:testBookCreationFailsIfEmptyTitle</h2>
-<div style="padding-left:3em">
-<p>Title must be defined</p>
-be.fabrice.proto.model.entity.Book.&lt;init&gt;(Book.java:100)
-<br/>at be.fabrice.proto.model.entity.TestBook.testBookCreationFailsIfEmptyTitle(TestBook.java:41)
-<br/>25 lines not shown
-</div>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m11"></a><h2>be.fabrice.proto.model.entity.TestBook:testAddNewCategoryToNonEmptyCollectionAddsCategoryToCollection</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<a id="m12"></a><h2>be.fabrice.proto.model.entity.TestBook:testBookCreationFailsIfNullIsbn</h2>
-<div style="padding-left:3em">
-<p>Isbn must be defined</p>
-be.fabrice.proto.model.entity.Book.&lt;init&gt;(Book.java:97)
-<br/>at be.fabrice.proto.model.entity.TestBook.testBookCreationFailsIfNullIsbn(TestBook.java:46)
-<br/>25 lines not shown
-</div>
+<a id="m4"></a><h2>be.fabrice.proto.web.mapper.BookMapperTest:testMapListOfEntitiesReturnsListOfVos</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>
