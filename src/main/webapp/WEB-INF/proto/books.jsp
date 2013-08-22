@@ -1,104 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html ng-app>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Livres</title>
-<script src="${pageContext.request.contextPath}/js/angular.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-ui-1.10.1.custom.min.js"></script>
-<script>
-	$(function() {
-		$("#bookdetail").dialog({
-			autoOpen:false,
-			modal:true,
-			title:"Détails"
-		})
-		$("#bookedit").dialog({
-			dialogClass: "no-close",
-			autoOpen:false,
-			modal:true,
-			title:"Edition/création d'un livre",
-	        width:'auto'
-		})
-	})
-	function BookCtrl($scope,$http){
-		$http.get('booksJson!list.do').success(function(data){
-			$scope.books = data
-		})
-		
-		$scope.detail = function(id) {
-				$http.get('booksJson!detail.do?id='+id).success(function(data,status){
-					$("#bookdetail").dialog('open');
-					$scope.book = data.book;
-					$scope.bookSelectedCategories = data.bookCategories;
-				});
-		}
-		
-		$scope.edit = function(id){
-			$scope.bookVo = '';
-			$scope.categories = []; 
-			$scope.bookSelectedCategories = []; 
-			$("input").each(function(i,e){$(e).removeClass("error")})
-			$("#messages").removeClass()
-			$scope.messages = null
-			$scope.error=null;
-			$("#bookdetail").dialog('close');
-			$http.get("booksJson!categoriesList.do").success(function(data,status){
-				$scope.categories = data; 
-				if(id!=null){
-					$("input#bookVoIsbn").attr("readonly","readonly");
-					$("input#bookVoIsbn").attr("disabled","disabled");
-					$http.get('booksJson!edit.do?id='+id).success(function(data,status){
-						$scope.bookVo = data.book;
-						$scope.bookSelectedCategories = []; 
-						angular.forEach(data.bookCategories, 
-								function(o){this.push(o.id);},
-								$scope.bookSelectedCategories);
-					});
-				} else {
-					$("input#bookVoIsbn").removeAttr("readonly");
-					$("input#bookVoIsbn").removeAttr("disabled");
-				}
-			});
-			$("#bookedit").dialog('open');
-		}
-		
-		$scope.save = function(bookEdit,bookSelectedCategories){
-			var b = {
-				'bookVo':bookEdit==""?{}:bookEdit, //Quand rien n'est rempli, booEdit==""
-				'categoriesId':bookSelectedCategories
-			};
-			$("input").each(function(i,e){$(e).removeClass("error")});
-			$("#messages").removeClass();
-			$scope.messages = null;
-			$scope.error==null;
-			$http({method:"POST", url:"booksJson!save.do?struts.enableJSONValidation=true", data:b}).success(function(data){
-				if(data.fieldErrors){
-					$scope.error=data.fieldErrors
-					for(var key in data.fieldErrors){
-						$("input[id='"+key+"']").addClass("error")
-					}
-					$("#messages").addClass("errorMessages")
-					$scope.messages = data.actionErrors
-				} else {
-					$scope.bookVo = '';
-					$scope.categories = []; 
-					$scope.bookSelectedCategories = []; 
-					$("#bookedit").dialog('close');
-					$http.get('booksJson!list.do').success(function(data){
-						$scope.books = data
-					})
-				}
-			});
-		}
-		
-		$scope.cancel = function(dlgId){
-			$("#"+dlgId).dialog('close');
-		}
-	}
-</script>
+<script src="${pageContext.request.contextPath}/js/angular.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/book.js" type="text/javascript" charset="UTF-8"></script>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/proto.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/styles/jquery-ui-1.10.1.custom.css" />
 </head>
@@ -117,19 +26,19 @@
 				<td>{{book.isbn}}</td>
 			</tr>
 		</table>
-		<button ng-click="edit(null)">Créer un livre</button>
+		<button ng-click="edit(null)">CrÃ©er un livre</button>
 	</div>
-	<div id="bookdetail">
+	<div id="bookdetail" title="DÃ©tails">
 		Titre: {{book.title}}<br />
 		Auteur: {{book.author}}<br />
 		Isbn: {{book.isbn}}<br />
-		Catégories:<br />
+		CatÃ©gories:<br />
 		<ul ng-repeat="c in bookSelectedCategories">
 			<li>{{c.name}}</li>
 		</ul>
 		<button ng-click="edit(book.id)">Editer</button>
 	</div>
-	<div id="bookedit">
+	<div id="bookedit" title="Edition/crÃ©ation d'un livre">
 		<div id="messages">
 			<ul ng-repeat="m in messages">
 				<li>{{m}}</li>
@@ -149,12 +58,12 @@
 				<td>&nbsp;
 			</tr>
 			<tr>
-				<td>Isbn (non éditable): </td>
+				<td>Isbn: </td>
 				<td><input type="text" id="bookVoIsbn" ng-model="bookVo.isbn"  required /><span ></</span></td>
 				<td><span class="errorMessages">{{error['bookVo.isbn'][0]}}</span></td>
 			</tr>
 			<tr>
-				<td>Catégories: </td>
+				<td>CatÃ©gories: </td>
 				<td><select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select></td>
 				<td><span class="errorMessages">{{error['categoriesId'][0]}}</span></td>
 			</tr>

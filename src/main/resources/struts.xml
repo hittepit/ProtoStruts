@@ -4,6 +4,7 @@
 <struts>
 	<constant name="struts.action.extension" value="do" />
 	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
 
 	<include file="struts-default.xml"></include>
 	<package name="default" extends="struts-default" namespace="/">
