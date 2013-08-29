@@ -33,7 +33,7 @@ function BookCtrl($scope,$http){
 		$scope.bookVo = '';
 		$scope.categories = []; 
 		$scope.bookSelectedCategories = []; 
-		$("input").each(function(i,e){$(e).removeClass("error");});
+		$(".error").each(function(i,e){$(e).removeClass("error");});
 		$("#messages").removeClass();
 		$scope.messages = null;
 		$scope.error=null;
@@ -63,7 +63,7 @@ function BookCtrl($scope,$http){
 			'bookVo':bookEdit==""?{}:bookEdit, //Quand rien n'est rempli, booEdit==""
 			'categoriesId':bookSelectedCategories
 		};
-		$("input").each(function(i,e){$(e).removeClass("error");});
+		$(".error").each(function(i,e){$(e).removeClass("error");});
 		$("#messages").removeClass();
 		$scope.messages = null;
 		$scope.error==null;
@@ -72,7 +72,7 @@ function BookCtrl($scope,$http){
 			if(data.fieldErrors){
 				$scope.error=data.fieldErrors;
 				for(var key in data.fieldErrors){
-					$("input[id='"+key+"']").addClass("error");
+					$("[name='"+key+"']").addClass("error");
 				}
 				$("#messages").addClass("errorMessages");
 				$scope.messages = data.actionErrors;
@@ -87,7 +87,7 @@ function BookCtrl($scope,$http){
 			}
 		}).error(function(data,status,header,config){
 			if(status==401){
-				alert("Tu ne peux pas!");
+				alert("Tu n'as pas le droit d'effectuer cette opération. Ton nom a été envoyé à ton chef!");
 			} else {
 				alert("Erreur "+status);
 			}

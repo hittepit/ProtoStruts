@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit person</title>
-<script src="angular.min.js"></script>
-<script src="jquery-1.9.1.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/jquery-1.9.1.js"></script>
 <script>
 	function PersonCtrl($scope,$http){
 //		var id = '<s:property value="person" />';

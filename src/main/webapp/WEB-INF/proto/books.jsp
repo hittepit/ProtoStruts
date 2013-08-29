@@ -49,22 +49,22 @@
 			<table>
 			<tr>
 				<td>Titre: </td>
-				<td><input type="text" id="bookVoTitle" ng-model="bookVo.title"  required/></td>
+				<td><input type="text" id="bookVoTitle" name="bookVo.title" ng-model="bookVo.title"  required/></td>
 				<td><span class="errorMessages">{{error['bookVo.title'][0]}}</span></td>
 			</tr>
 			<tr>
 				<td>Auteur: </td>
-				<td><input type="text" id="bookVoAuthor" ng-model="bookVo.author"  /></td>
+				<td><input type="text" id="bookVoAuthor" name="bookVo.author" ng-model="bookVo.author"  /></td>
 				<td>&nbsp;
 			</tr>
 			<tr>
 				<td>Isbn: </td>
-				<td><input type="text" id="bookVoIsbn" ng-model="bookVo.isbn"  required /><span ></</span></td>
+				<td><input type="text" id="bookVoIsbn" name="bookVo.isbn" ng-model="bookVo.isbn"  required /><span ></</span></td>
 				<td><span class="errorMessages">{{error['bookVo.isbn'][0]}}</span></td>
 			</tr>
 			<tr>
 				<td>Catégories: </td>
-				<td><select ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select></td>
+				<td><select name="categoriesId" ng-model="bookSelectedCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select></td>
 				<td><span class="errorMessages">{{error['categoriesId'][0]}}</span></td>
 			</tr>
 			<tr>
