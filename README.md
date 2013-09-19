@@ -19,6 +19,9 @@ tables au démarrage:
 Une fois démarrée, l'application est accessible à 
 [http://localhost:8080/ProtoStruts/proto/books.do](http://localhost:8080/ProtoStruts/proto/books.do)
 
+Une autre version, basée sur bootstrap, est accessible à [http://localhost:4080/ProtoStruts/proto/book.html]
+{http://localhost:4080/ProtoStruts/proto/book.html} (encore quelques petits problèmes à régler).
+
 ### Librairies
 
 Pour les versions exactes, voir le [pom.xml](https://github.com/hittepit/ProtoStruts/blob/master/pom.xml).
@@ -29,6 +32,7 @@ Pour les versions exactes, voir le [pom.xml](https://github.com/hittepit/ProtoSt
 * hibernate
 * jquery
 * angularJS
+* bootstrap (dans le deuxième exemple)
 
 ### Modèle robuste
 

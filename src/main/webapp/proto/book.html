@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title>Book protostruts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/proto.css" rel="stylesheet" media="screen">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-controller="BookCtrl">
+    <h1>Books</h1>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/book.js"></script>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Liste</h2>
+        <table class="table table-hover">
+          <thead>
+            <tr><th>Isbn</th><th>Titre</th><th>Auteur</th></tr>
+          </thead>
+          <tbody>
+            <tr  ng-repeat="book in books" id="book{{book.id}}" ng-click="rowselect(book.id)">
+              <td>{{book.isbn}}</td><td>{{book.title}}</td><td>{{book.author}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <a class="btn btn-primary btn-mg" ng-click="create()">Créer un nouveau livre</a>
+      </div>
+      <div class="col-md-4" ng-hide="hideDetail">
+        <h2>Détails</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>Titre:</strong></td>
+              <td><em>{{selectedBook.title}}</em></td>
+            </tr>
+            <tr>
+              <td><strong>Auteur:</strong></td>
+              <td><em>{{selectedBook.author}}</em></td>
+            </tr>
+            <tr>
+              <td><strong>Isbn:</strong></td>
+              <td><em>{{selectedBook.isbn}}</em></td>
+            </tr>
+            <tr>
+              <td><strong>Catégories:</strong></td>
+              <td><em><ul>
+                <li ng-repeat="c in selectedBookCategories">{{c.name}}</li>
+              </ul></em></td>
+            </tr>
+          </tbody>
+        </table>
+        <a data-toggle="modal" href="#bookEdit" class="btn btn-primary btn-sg" ng-click="edit(selectedBook.id)">Modifier</a>
+      </div>
+    </div>
+    <div class="modal fade" id="bookEdit" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">{{formTitle}}</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" role="form" novalidate>
+            <input type="hidden"  ng-model="editedBook.id">
+            <div class="form-group">
+              <label for="isbnId" class="col-lg-2 control-label">Isbn</label>
+              <div class="col-lg-10">
+                <input type="text" name="bookVo.isbn" class="form-control" id="isbnId" placeholder="Isbn" ng-model="editedBook.isbn" required>
+               <span class="errorMessages">{{errors['bookVo.isbn'][0]}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="titleId" class="col-lg-2 control-label">Titre</label>
+              <div class="col-lg-10">
+                <input type="text" name="bookVo.title" class="form-control" id="titleId" placeholder="Titre" ng-model="editedBook.title" required>
+               <span class="errorMessages">{{errors['bookVo.title'][0]}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="authorId" class="col-lg-2 control-label">Auteur</label>
+              <div class="col-lg-10">
+                <input type="text" name="bookVo.author" class="form-control" id="authorId" placeholder="Auteur" ng-model="editedBook.author">
+               <span class="errorMessages">{{errors['bookVo.author'][0]}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="categoriesId" class="col-lg-2 control-label">Catégories</label>
+              <div class="col-lg-10">
+                <select name="categoriesId" class="form-control" ng-model="editedBookCategories" ng-options="c.id as c.description for c in categories" multiple="multiple"></select>
+               <span class="errorMessages">{{errors['categoriesId'][0]}}</span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary btn-sm" ng-click="save(editedBook,editedBookCategories)">Sauver</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  </body>
+</html>
