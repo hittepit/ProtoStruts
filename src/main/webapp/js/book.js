@@ -13,19 +13,25 @@ function exception(data){
 	return data.exception != null;
 }
 function BookCtrl($scope,$http){
+	function call(m,u,d,s){
+		$http({method: m,url:u,data:d}).success(s).error(function(data,status,header,config){
+			if(status==401){
+				alert("Pas de droit d'effectuer cette action!");
+			} else {
+				alert("Erreur "+status);
+			}
+		})
+	};
+
 	$http.get('booksJson!list.do').success(function(data){
 		$scope.books = data;
 	});
 	
 	$scope.detail = function(id) {
-			$http.get('booksJson!detail.do?id='+id).success(function(data,status){
-				if(exception(data)){
-					alert("exception !!");
-				} else {
+			call('GET','booksJson!detail.do?id='+id,null,function(data,status){
 					$("#bookdetail").dialog('open');
 					$scope.book = data.book;
 					$scope.bookSelectedCategories = data.bookCategories;
-				}
 			});
 	};
 	
@@ -67,30 +73,25 @@ function BookCtrl($scope,$http){
 		$("#messages").removeClass();
 		$scope.messages = null;
 		$scope.error==null;
-		$http({method:"POST", 
-			url:"booksJson!save.do?struts.enableJSONValidation=true", data:b}).success(function(data){
-			if(data.fieldErrors){
-				$scope.error=data.fieldErrors;
-				for(var key in data.fieldErrors){
-					$("[name='"+key+"']").addClass("error");
+		call("POST", 
+			"booksJson!save.do?struts.enableJSONValidation=true", b, 
+			function(data){
+				if(data.fieldErrors){
+					$scope.error=data.fieldErrors;
+					for(var key in data.fieldErrors){
+						$("[name='"+key+"']").addClass("error");
+					}
+					$("#messages").addClass("errorMessages");
+					$scope.messages = data.actionErrors;
+				} else {
+					$scope.bookVo = '';
+					$scope.categories = []; 
+					$scope.bookSelectedCategories = []; 
+					$("#bookedit").dialog('close');
+					$http.get('booksJson!list.do').success(function(data){
+						$scope.books = data;
+					});
 				}
-				$("#messages").addClass("errorMessages");
-				$scope.messages = data.actionErrors;
-			} else {
-				$scope.bookVo = '';
-				$scope.categories = []; 
-				$scope.bookSelectedCategories = []; 
-				$("#bookedit").dialog('close');
-				$http.get('booksJson!list.do').success(function(data){
-					$scope.books = data;
-				});
-			}
-		}).error(function(data,status,header,config){
-			if(status==401){
-				alert("Tu n'as pas le droit d'effectuer cette opération. Ton nom a été envoyé à ton chef!");
-			} else {
-				alert("Erreur "+status);
-			}
 		});
 	};
 	

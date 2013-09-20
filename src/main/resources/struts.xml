@@ -97,11 +97,11 @@
 			<result name="unauthorized" type="json">
 				<param name="statusCode">401</param>
 			</result>
-			<result name="exception" type="json" />
+			<!--result name="exception" type="json" /-->
 		</global-results>
-		<global-exception-mappings>
+		<!--global-exception-mappings>
 			<exception-mapping result="exception" exception="java.lang.Throwable"></exception-mapping>
-		</global-exception-mappings>
+		</global-exception-mappings-->
 		<action name="books" class="be.fabrice.proto.web.action.BooksAction">
 			<result name="success">/WEB-INF/proto/books.jsp</result>
 		</action>

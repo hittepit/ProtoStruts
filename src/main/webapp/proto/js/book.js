@@ -1,4 +1,16 @@
-      function BookCtrl($scope,$http){
+
+
+function BookCtrl($scope,$http){
+	function call(m,u,d,s){
+		$http({method: m,url:u,data:d}).success(s).error(function(data,status,header,config){
+			if(status==401){
+				alert("Tu n'as pas le droit d'effectuer cette opération. Ton nom a été envoyé à ton chef!");
+			} else {
+				alert("Erreur "+status);
+			}
+		})
+	};
+	
         var selectedRow = '';
         $scope.selectedBook = {}
         $scope.selectedBookCategories =[]
@@ -16,7 +28,8 @@
             $("tr#"+selectedRow).removeClass("success")
           }
           if(selectedRow != "book"+bid){
-            $http.get('booksJson!detail.do?id='+bid).success(function(data){
+            //$http.get('booksJson!detail.do?id='+bid).success(
+            call('GET','booksJson!detail.do?id='+bid,null,function(data){
             	if(data.exception != null){
 					alert("exception !!");
 		            selectedRow='';
@@ -29,7 +42,8 @@
 	              $scope.hideDetail = false;
 	              angular.forEach(data.bookCategories, function(o){this.push(o.id);},$scope.editedBookCategories);
 				}
-            })
+            });
+            		//)
           } else {
             selectedRow='';
             $scope.hideDetail = true;
@@ -64,7 +78,7 @@
             'bookVo':b==""?{}:b, //Quand rien n'est rempli, booEdit==""
             'categoriesId':c
           };
-          $http.post('booksJson!save.do?struts.enableJSONValidation=true',d).success(function(data){
+          call('POST','booksJson!save.do?struts.enableJSONValidation=true',d,function(data){
             if(data.fieldErrors){
               $scope.errors=data.fieldErrors
               for(var key in data.fieldErrors){
@@ -78,12 +92,13 @@
               selectedRow='';
               $scope.hideDetail = true;
             }
-          }).error(function(data,status,header,config){
+          })
+/*          .error(function(data,status,header,config){
 			if(status==401){
 				alert("Tu n'as pas le droit d'effectuer cette opération. Ton nom a été envoyé à ton chef!");
 			} else {
 				alert("Erreur "+status);
 			}
-		});
+		});*/
         }
       }
