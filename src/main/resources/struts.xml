@@ -36,12 +36,10 @@
 			<interceptor-stack name="jsonstack">
                 <interceptor-ref name="exception">
 					<param name="logEnabled">true</param>
+					<param name="logCategory">be.fabrice.Test</param>
+					<param name="logLevel">ERROR</param>
                 </interceptor-ref>
-                <interceptor-ref name="servletConfig"/>
                 <interceptor-ref name="prepare"/>
-                <interceptor-ref name="checkbox"/>
-                <interceptor-ref name="multiselect"/>
-                <interceptor-ref name="actionMappingParams"/>
                 <interceptor-ref name="params">
                     <param name="excludeParams">dojo\..*,^struts\..*</param>
                 </interceptor-ref>
@@ -52,7 +50,6 @@
 					<param name="excludeMethods">input,back,cancel</param>
                 </interceptor-ref>
                 <interceptor-ref name="jsonValidation"></interceptor-ref>
-                <interceptor-ref name="workflow"/>
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="normal"></default-interceptor-ref>
