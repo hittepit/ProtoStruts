@@ -15,7 +15,7 @@ function exception(data){
 function BookCtrl($scope,$http){
 	function call(m,u,d,s){
 		$http({method: m,url:u,data:d}).success(s).error(function(data,status,header,config){
-			if(status==401){
+			if(status==403){
 				alert("Pas de droit d'effectuer cette action!");
 			} else {
 				alert("Erreur "+status);

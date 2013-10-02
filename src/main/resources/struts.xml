@@ -9,7 +9,10 @@
 	<include file="struts-default.xml"></include>
 	<package name="default" extends="struts-default" namespace="/">
 		<result-types>
-			<result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult">
+				<param name="excludeNullProperties">true</param>
+				<param name="noCache">true</param>
+			</result-type>
 		</result-types>
 		<interceptors>
 			<interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
@@ -92,7 +95,7 @@
 		<default-interceptor-ref name="jsonstack" />
 		<global-results>
 			<result name="unauthorized" type="json">
-				<param name="statusCode">401</param>
+				<param name="statusCode">403</param>
 			</result>
 			<!--result name="exception" type="json" /-->
 		</global-results>
@@ -104,18 +107,12 @@
 		</action>
 		<action name="booksJson" class="be.fabrice.proto.web.action.BookJsonAction">
 			<result name="books" type="json">
-				<param name="excludeNullProperties">true</param>
-				<param name="noCache">true</param>
 				<param name="root">books</param>
 			</result>
 			<result name="categories" type="json">
-				<param name="excludeNullProperties">true</param>
-				<param name="noCache">true</param>
 				<param name="root">categories</param>
 			</result>
 			<result name="detail" type="json">
-				<param name="excludeNullProperties">true</param>
-				<param name="noCache">true</param>
 				<param name="root">#{"book": bookVo, "bookCategories":bookCategories}</param>
 			</result>
 			<result name="saved" type="json" />
