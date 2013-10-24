@@ -3,8 +3,6 @@ Projet prototype Struts
 
 L'objectif de ce projet est de tester certains aspects de Struts.
 
-Parmi les essais en cours, le plus abouti est celui de l'utilisation d'Ajax.
-
 Prototype d'échange Ajax/json
 ---------------------------------------
 
@@ -20,12 +18,12 @@ Une fois démarrée, l'application est accessible à
 [http://localhost:8080/ProtoStruts/proto/books.do](http://localhost:8080/ProtoStruts/proto/books.do)
 
 Une autre version, basée sur bootstrap, est accessible à 
-[http://localhost:4080/ProtoStruts/proto/book.html](http://localhost:4080/ProtoStruts/proto/book.html)
+[http://localhost:4080/ProtoStruts/proto/books.html](http://localhost:4080/ProtoStruts/proto/book.html)
 (encore quelques petits problèmes à régler).
 
 ### Librairies
 
-Pour les versions exactes, voir le [pom.xml](https://github.com/hittepit/ProtoStruts/blob/master/pom.xml).
+Pour les versions exactes, voir le [pom.xml](https://github.com/hittepit/ProtoStruts/blob/proto/pom.xml).
 
 * struts 2
 	- dont le plugin struts2-json
@@ -38,7 +36,7 @@ Pour les versions exactes, voir le [pom.xml](https://github.com/hittepit/ProtoSt
 ### Modèle robuste
 
 La base de l'application c'est un modèle robuste. Voir les explications dans la JavaDoc de la classe
-[Book](https://github.com/hittepit/ProtoStruts/blob/master/src/main/java/be/fabrice/proto/model/entity/Book.java).
+[Book](https://github.com/hittepit/ProtoStruts/blob/proto/src/main/java/be/fabrice/proto/model/entity/Book.java).
 
 Elle utilise notamment un objet ISBN dont la validation a été simplifiée pour permettre l'introduction
 de n'importe quel chiffre à des fins de démo. Il suffit de rentrer 13 chiffres (caractères en fait) commençant par 978.
@@ -69,8 +67,6 @@ La validation est effectuée de manière standard par Struts. Les validateurs so
 validateurs qui font appel à des validations métier (pour l'ISBN par exemple).
 
 ## TODO proto
-
-* améliorer l'ajax/json pour les exceptions et les erreurs d'autorisation
 
 * problème mise en page formulaire
 

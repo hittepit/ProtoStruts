@@ -3,7 +3,9 @@
 function BookCtrl($scope,$http){
 	function call(m,u,d,s){
 		$http({method: m,url:u,data:d}).success(s).error(function(data,status,header,config){
-			if(status==403){
+			if(status==401){
+				alert("Pas loggé!");
+			} else if(status==403){
 				alert("Tu n'as pas le droit d'effectuer cette opération. Ton nom a été envoyé à ton chef!");
 			} else {
 				alert("Erreur "+status);

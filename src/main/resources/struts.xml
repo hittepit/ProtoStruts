@@ -7,35 +7,18 @@
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 
 	<include file="struts-default.xml"></include>
-	<package name="default" extends="struts-default" namespace="/">
+
+	<package name="proto" extends="struts-default" namespace="/proto">
 		<result-types>
-			<result-type name="json" class="org.apache.struts2.json.JSONResult">
-				<param name="excludeNullProperties">true</param>
-				<param name="noCache">true</param>
-			</result-type>
-		</result-types>
+        	<result-type name="json" class="org.apache.struts2.json.JSONResult">
+            	<param name="excludeNullProperties">true</param>
+                <param name="noCache">true</param>
+        </result-type>
+        </result-types>
 		<interceptors>
 			<interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
 			<interceptor name="jsonValidation" class="org.apache.struts2.json.JSONValidationInterceptor"/>
 			<interceptor name="security" class="be.fabrice.proto.interceptor.FakeSecurityInterceptor" />
-			<interceptor-stack name="normal">
-                <interceptor-ref name="exception">
-					<param name="logEnabled">true</param>
-                </interceptor-ref>
-                <interceptor-ref name="servletConfig"/>
-                <interceptor-ref name="prepare"/>
-                <interceptor-ref name="checkbox"/>
-                <interceptor-ref name="multiselect"/>
-                <interceptor-ref name="actionMappingParams"/>
-                <interceptor-ref name="params">
-                    <param name="excludeParams">dojo\..*,^struts\..*</param>
-                </interceptor-ref>
-                <interceptor-ref name="conversionError"/>
-                <interceptor-ref name="validation">
-					<param name="excludeMethods">input,back,cancel</param>
-                </interceptor-ref>
-                <interceptor-ref name="workflow"/>
-			</interceptor-stack>
 			<interceptor-stack name="jsonstack">
                 <interceptor-ref name="exception">
 					<param name="logEnabled">true</param>
@@ -54,49 +37,12 @@
                 <interceptor-ref name="jsonValidation" />
 			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="normal"></default-interceptor-ref>
-		<action name="first" class="be.fabrice.actions.redirect.FirstAction" method="input">
-			<result name="input">/WEB-INF/first.jsp</result>
-			<result name="next" type="redirectAction">second</result>
-		</action>
-		<action name="second" class="be.fabrice.actions.redirect.SecondAction">
-			<result name="success">/WEB-INF/second.jsp</result>
-		</action>
-	</package>
-	<package name="json" extends="default">
-		<action name="personList" class="be.fabrice.actions.json.PersonListAction">
-			<result name="success">/WEB-INF/personList.jsp</result>
-		</action>
-		<action name="personEditNormal" class="be.fabrice.actions.json.PersonneActionJson" method="input">
-			<!--  pas optimal, normalement seulement le résultat input renvoyé par le WorkflowInterceptor
-			mais fait comme ça pour démontrer qu'il n'y a pas de différence entre les actions normales et
-			json (ce résultat mis à part) -->
-			<!-- Une autre possibilité consiste à recongigurer l'intercepteur workflow dans ce cas-ci afin qu'il
-			renvoie succes, mais c'est du chipotage -->
-			<!-- Comme ceci (redéfinition d'un stack spécifique à l'action:
-			<interceptor-ref name="normal">
-				<param name="workflow.inputResultName">success</param>
-			</interceptor-ref>
-			Alors, le résultat "input" peut disparaître (voir le worklfow standard de validation)
-			 -->
-			<result name="input">/WEB-INF/personEdit.jsp</result>
-			<result name="success">/WEB-INF/personEdit.jsp</result>
-			<result name="saved" type="redirectAction">personList</result>
-		</action>
-		<action name="personEditJson" class="be.fabrice.actions.json.PersonneActionJson" method="input">
-			<interceptor-ref name="jsonstack" />
-			<result name="success">/WEB-INF/personEditJson.jsp</result>
-			<result name="input" type="json" />
-			<result name="saved" type="json" />
-		</action>
-	</package>
-	<package name="proto" extends="default" namespace="/proto">
 		<default-interceptor-ref name="jsonstack" />
 		<global-results>
-			<result name="login">
+			<result name="login" type="json">
 				<param name="statusCode">401</param>
 			</result>
-			<result name="unauthorized">
+			<result name="unauthorized" type="json">
 				<param name="statusCode">403</param>
 			</result>
 		</global-results>
