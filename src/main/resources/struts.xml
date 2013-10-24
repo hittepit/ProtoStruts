@@ -39,7 +39,6 @@
 			<interceptor-stack name="jsonstack">
                 <interceptor-ref name="exception">
 					<param name="logEnabled">true</param>
-					<param name="logCategory">be.fabrice.Test</param>
 					<param name="logLevel">ERROR</param>
                 </interceptor-ref>
                 <interceptor-ref name="prepare"/>
@@ -94,14 +93,13 @@
 	<package name="proto" extends="default" namespace="/proto">
 		<default-interceptor-ref name="jsonstack" />
 		<global-results>
-			<result name="unauthorized" type="json">
+			<result name="login">
+				<param name="statusCode">401</param>
+			</result>
+			<result name="unauthorized">
 				<param name="statusCode">403</param>
 			</result>
-			<!--result name="exception" type="json" /-->
 		</global-results>
-		<!--global-exception-mappings>
-			<exception-mapping result="exception" exception="java.lang.Throwable"></exception-mapping>
-		</global-exception-mappings-->
 		<action name="books" class="be.fabrice.proto.web.action.BooksAction">
 			<result name="success">/WEB-INF/proto/books.jsp</result>
 		</action>
